@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Animation</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="heartCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        const math = Math;
+
+        function hearta(R) {
+            return 15 * math.sin(R) ** 3;
+        }
+
+        function heartb(R) {
+            return 12 * math.cos(R) - 5 * math.cos(2 * R) - 2 * math.cos(3 * R) - math.cos(4 * R);
+        }
+
+        function drawHeart() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+            for (let i = 0; i < 6000; i++) {
+                const x = hearta(i) * 20 + canvas.width / 2;
+                const y = heartb(i) * 20 + canvas.height / 2;
+                ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function animateHeart() {
+            let i = 0;
+            function animate() {
+                if (i < 6000) {
+                    const x = hearta(i) * 20 + canvas.width / 2;
+                    const y = heartb(i) * 20 + canvas.height / 2;
+                    ctx.lineTo(x, y);
+                    ctx.strokeStyle = 'red';
+                    ctx.stroke();
+                    i++;
+                    requestAnimationFrame(animate);
+                } else {
+                    ctx.lineTo(canvas.width / 2, canvas.height / 2);
+                    ctx.stroke();
+                }
+            }
+            animate();
+        }
+
+        animateHeart();
+    </script>
+</body>
+</html>
