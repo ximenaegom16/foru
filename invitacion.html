@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navidad</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #FFFFFF; /* Fondo blanco */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Playfair Display', serif; /* Fuente elegante */
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        .message {
+            font-size: 24px;
+            color: #87CEEB; /* Azul celeste */
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px #B0C4DE; /* Sombra ligera */
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: pink;
+            opacity: 0.8;
+            transform: rotate(45deg);
+            animation: float 5s infinite;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: pink;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            top: 0;
+            left: -10px;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+        .penguin {
+            width: 100px; /* Tamaño reducido */
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cambiando tamaño del GIF -->
+        <iframe src="https://tenor.com/embed/17802062549917907324" class="penguin" frameborder="0" scrolling="no"></iframe>
+        <p class="message">¡Vamos a hacer muchas dates navideñas! La primera es un parque navideño... ¿sabes cuál es? Meno, vete preparando el próximo fin!</p>
+        <div class="hearts">
+            <!-- Corazones flotantes -->
+            <div class="heart" style="left: 20%; animation-delay: 0s;"></div>
+            <div class="heart" style="left: 40%; animation-delay: 1s;"></div>
+            <div class="heart" style="left: 60%; animation-delay: 2s;"></div>
+            <div class="heart" style="left: 80%; animation-delay: 3s;"></div>
+        </div>
+    </div>
+</body>
+</html>
